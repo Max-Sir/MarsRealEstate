@@ -20,7 +20,7 @@ class OverviewViewModel : ViewModel() {
 
     private var viewModelJob= Job()
     private val  coroutineScope= CoroutineScope(Dispatchers.Main+viewModelJob)
-    k
+
     // The internal MutableLiveData String that stores the most recent response
     private val _response = MutableLiveData<String>()
 
