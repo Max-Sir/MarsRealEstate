@@ -1,26 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<!--
-  ~ Copyright 2018, The Android Open Source Project
-  ~
-  ~ Licensed under the Apache License, Version 2.0 (the "License");
-  ~ you may not use this file except in compliance with the License.
-  ~ You may obtain a copy of the License at
-  ~
-  ~     http://www.apache.org/licenses/LICENSE-2.0
-  ~
-  ~ Unless required by applicable law or agreed to in writing, software
-  ~ distributed under the License is distributed on an "AS IS" BASIS,
-  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-  ~ See the License for the specific language governing permissions and
-  ~ limitations under the License.
-  ~
-  -->
 
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <data>
+        <variable
+            name="viewModel"
+            type="com.example.android.marsrealestate.detail.DetailViewModel" />
+    </data>
+    
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -35,6 +25,7 @@
                 android:id="@+id/main_photo_image"
                 android:layout_width="0dp"
                 android:layout_height="266dp"
+                app:imageUrl="@{viewModel.selectedProperty.imgSrcUrl}"
                 android:scaleType="centerCrop"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -50,7 +41,8 @@
                 android:textSize="39sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/main_photo_image"
-                tools:text="To Rent" />
+                tools:text="To Rent"
+                android:text="@{viewModel.displayPropertyType}"/>
 
             <TextView
                 android:id="@+id/price_value_text"
@@ -61,7 +53,8 @@
                 android:textSize="20sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/property_type_text"
-                tools:text="$100,000" />
+                tools:text="$1000,000,000,000"
+                android:text="@{viewModel.displayPropertyPrice}" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
