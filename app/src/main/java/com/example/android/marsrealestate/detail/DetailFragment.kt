@@ -1,11 +1,14 @@
 package com.example.android.marsrealestate.detail
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import com.example.android.marsrealestate.R
 import com.example.android.marsrealestate.databinding.FragmentDetailBinding
 
 /**
@@ -26,6 +29,17 @@ class DetailFragment : Fragment() {
         val viewModelFactory = DetailViewModelFactory(selectedProperty, application)
         val viewModel = ViewModelProvider(this, viewModelFactory).get(DetailViewModel::class.java)
         binding.viewModel = viewModel
+        binding.mainPhotoImage.setOnClickListener{
+            val uriString=viewModel.selectedProperty.value?.imgSrcUrl!!
+            openWebPage(uriString)
+        }
         return binding.root
+    }
+
+
+    fun openWebPage(uriString:String) {
+
+        val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse(uriString))
+        startActivity(browserIntent)
     }
 }
