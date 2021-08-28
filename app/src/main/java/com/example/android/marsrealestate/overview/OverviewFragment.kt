@@ -55,7 +55,7 @@ class OverviewFragment : Fragment() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        return super.onOptionsItemSelected(item)
+        super.onOptionsItemSelected(item)
         viewModel.updateFilter(
             when (item.itemId) {
                 R.id.show_rent_menu -> MarsApiFilter.SHOW_RENT
